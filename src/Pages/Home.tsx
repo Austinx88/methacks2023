@@ -14,6 +14,8 @@ export default  function(): JSX.Element{
     return (
         <Card>
           <img className={styles.img} src = { logo} />
+          <div className= {styles.card}></div>
+          
           <button className={styles.button2}onClick={handleClick}>
             Chat
           </button>

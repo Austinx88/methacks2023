@@ -33,6 +33,21 @@ img {
     font-size: 30px;
     height: 60px;
     width: 160px;
-    top: 460px;
+    top: 160px;
     right:210px;
     position: relative;}
+
+.card{
+  background-color: rgb(225, 225, 225);
+  width: 80%;
+  height: 50%;
+  aspect-ratio: auto;
+  border-radius: 30px;
+  color: white;
+  font-family: 'Open Sans';
+  padding: 30px;
+  position: relative;
+  overflow: visible;
+  top: 70px;
+  left: 10px;
+}

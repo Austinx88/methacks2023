@@ -2,6 +2,7 @@ import React from 'react'
 import { Route, Redirect, Switch } from 'wouter'
 import { PageWrapper } from './PageWrapper'
 import Home from "./Pages/Home" 
+import Login from './Pages/Login'
 
 
 export default function App (): JSX.Element {
@@ -13,7 +14,9 @@ export default function App (): JSX.Element {
                 <Home/>
             </PageWrapper>
         </Route>
-        <Route path="/login"></Route>
+        <Route path="/login">
+            <Login/>
+        </Route>
         <Route path="/swap"></Route>
         </>
    )
