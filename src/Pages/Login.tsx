@@ -1,6 +1,8 @@
 import React from 'react'
 import {Card} from './Card'
-import jsonfile from 'jsonfile'
+import { navigate } from 'wouter';
+import { useNavigate } from "react-router-dom";
+
 
 export default  function(): JSX.Element{
   function handleSubmit(e){
@@ -14,12 +16,18 @@ export default  function(): JSX.Element{
   });
   var json = JSON.stringify(object);
   console.log(json);
+  // code goes here
+  const history = useNavigate();
+  history('/home');
+ 
+ 
+
   }
 
 
     return (
         <Card>
-           <form method="post" onSubmit={handleSubmit}>
+           <form method="post" onSubmit={handleSubmit} >
       <label>
         Text input: <input name="username" defaultValue="" />
       </label>
