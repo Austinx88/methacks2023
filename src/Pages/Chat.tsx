@@ -1,67 +1,68 @@
 import React from 'react'
 import {Card} from './Card'
-import Messagelist from './Messageslist'
 import { Link } from 'wouter'
+import styles from './Chat.module.scss'
+import { useState } from 'react'
+import cohere from 'cohere-ai'
 
 
 
-export default  function(): JSX.Element{
-  var messages = [
-    {
-      id:1,
-      senderId: "perborgen",
-      text: "whasdasdadsn?"
-    },
-    {
-      id:2,
-      senderId: "janedoe",
-      text: "whasdasdasdin?"
-    }
-  ]
 
-  function handleSubmit(e){
-    e.preventDefault();
-    const form = e.target;
-    const formData = new FormData(form);
-    fetch('/some-api', { method: form.method, body: formData });
-    var  object = {};
-    formData.forEach(function(value, key){
-      object[key] = value;
+export default  function(){
+ 
+
+
+
+  const [person, setPerson] = useState({
+    aitext: "Hello Nice to Meet You"
+    
   });
-  var json = JSON.stringify(object);
-  const oee = JSON.parse(json);
-  console.log(oee.text);
 
-  var input = {id:3, senderId: "user", text:oee.text}
-  messages.push(input);
+  function handleaitextChange(e){
+    setPerson({
+      ...person,
+      aitext: e.target.value
+    });
+  }
+
+  function generate(){
+    console.log(person.aitext)
+    var userinput = person.aitext
+    
+   
+    
+
+
+
+
+
+    
+    
+    setPerson({
+      ...person,
+      aitext: "test"
+    });
+  }
 
 
 
   
-  }
  
 
     return (
+      <>
       <Card>
-      <div>
-      {messages.map(name => {
-        return (
-          <div key = {name.id}> 
-            <h2> name: {name.senderId}</h2>
-            <h2> Message: {name.text}</h2>
-            
-          </div>
-        );
-      })}
-      </div>
-      <form method="post" onSubmit={handleSubmit} >
+      <p>
+        {person.aitext}
+      </p>
       <label>
-        Text input: <input name="text" defaultValue="" />
+        <input value={person.aitext} onChange={handleaitextChange}   ></input>
       </label>
+      <button onClick={generate}>Submit</button>
       
-      <button type="submit">Submit form</button>
-    </form>
-
+     
+      
       </Card>
+      </>
     )
 }
