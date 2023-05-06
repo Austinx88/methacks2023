@@ -17,10 +17,12 @@ export default function App (): JSX.Element {
                 <Home/>
             </PageWrapper>
         </Route>
+
         <Route path="/login">
             <PageWrapper pageTheme={'light'}><Login/></PageWrapper>
             
         </Route>
+
         <Route path="/chat">
         <PageWrapper pageTheme={'light'}><Chat/></PageWrapper>
         </Route>
