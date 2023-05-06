@@ -12,7 +12,7 @@ response = co.generate(
   prompt= toronto,
   max_tokens=42,
   temperature=1,
-  k=56,
+  k=58,
   stop_sequences=[],
   return_likelihoods='NONE')
 print((response.generations[0].text))
