@@ -1,6 +1,5 @@
 import disnake, random, functions
 from disnake.ext import commands
-import discord
 
 # drizzy drake bot by sk8#5503
 # this bot was designed for personal use
@@ -155,13 +154,13 @@ async def add(inter, prompt: str):
 
 
 @bot.slash_command(name = "create", description="create an ai based on your prompt")
-async def add(inter,prompt: str, base: str = commands.Param(name="base", choices=['Programmer', 'Toronto', 'Shakespeare'])):
+async def add(inter,aboutme: str , base: str = commands.Param(name="base", choices=['Programmer', 'Toronto', 'Shakespeare']) ,food: str = "", pickup: str = "", ideal_date: str="", hobby: str = "", shows: str="", songs: str="" ):
 
     filename = str(inter.author.id)
     file1 = open(filename, "w")
     file1.write(str(0) + "\n")
     file1.write(base + "\n")
-    file1.write(prompt)
+    file1.write(aboutme + " " + food + " " + pickup + " " + ideal_date + " " + hobby + " " + shows + " " + songs)
     file1.close()
 
     file2 = open('users', "a")
@@ -173,20 +172,31 @@ async def add(inter,prompt: str, base: str = commands.Param(name="base", choices
 
 @bot.slash_command(name = "speakto", description="speak to someone else's ai")
 async def speakto(inter, prompt: str, rizzer: disnake.Member):
-    username = str(rizzer.id)
-    file1 = open(username, "r")
-    rizz = file1.readline()
-    base = file1.readline()
-    prompt = file1.readline()
-    output = ""
-    if(base == "Programmer"):
-        output = functions.drake_generate(prompt,slangstr)
-    if (base == "Toronto"):
-        output = "asd"
-    if (base == "Shakespeare"):
-        output = "asd"
+    await inter.response.defer()
 
-    await inter.response.send_message(base)
+    username = str(rizzer.id)
+    output = ""
+    try:
+        file1 = open(username, "r")
+        rizz = file1.readline()
+        base = file1.readline()
+        prompt = file1.readline()
+        if (base.__contains__("Programmer")):
+            output = functions.drake_generate(prompt, slangstr)
+        if (base.__contains__("Toronto")):
+            output = functions.programmer_generate(prompt, slangstr)
+        if (base.__contains__("Shakespeare")):
+            output = functions.shakespeare_generate(prompt, slangstr)
+    except:
+        output = "User has not made an ai"
+
+
+
+
+    if(output == ""):
+        output = "User has not made an ai"
+
+    await  inter.edit_original_response(content=output[0:200])
 
 
 
