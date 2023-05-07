@@ -85,7 +85,7 @@ async def on_message(message):
     if user_message[0:2] == 'd:' or user_message[0:2] == 'D:':
         prompt = user_message[2:]
         print(prompt)
-        await message.channel.send(functions.drake_generate(prompt).replace('\n', ""))
+        await message.channel.send(functions.drake_generate(prompt,slangstr))
         
 
 #slash commands:
