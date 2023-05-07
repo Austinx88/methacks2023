@@ -5,7 +5,7 @@ co = cohere.Client('ihkXSqNDJRtrS3iR9HxDrWGREDDM4XR3YpbfO2gE') # This is your tr
 def drake_generate(prompt, slangstr):
     response = co.generate(
     model='2d60718a-6428-4d76-bdfa-e7ab09df9ae6-ft',
-    prompt="respond to this as the popular toronto rapper, drake, would. use toronto slang such as these (seperated by |); "+ slangstr +" . this is the prompt:" + prompt,
+    prompt="respond to this as the popular toronto rapper, drake, would. DO NOT JUST FINISH THE GIVEN SENTANCE, instead reply to it. use toronto slang such as these (seperated by |); "+ slangstr +" . this is the question:" + prompt,
     max_tokens=300,
     temperature=0.9,
     k=0,

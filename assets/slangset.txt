@@ -4,7 +4,6 @@ fam=family/friend
 yute=youth
 6ix=toronto
 drizzy=drake
-yo
 Yo, you’re looking bare nice, still.=Hey, you look really nice today.
 You’re hotter than a Tim Hortons coffee.=You're more attractive than a cup of coffee from Tim Hortons.
 Aye, could you grab me a cup of water? I’m parched, eh.=Could you please get me a glass of water? I'm thirsty.
