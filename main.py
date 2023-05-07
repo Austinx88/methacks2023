@@ -145,18 +145,32 @@ async def add(inter, prompt: str):
 @bot.slash_command(name = "create", description="create an ai based on your prompt")
 async def add(inter,prompt: str, base: str = commands.Param(name="base", choices=['Programmer', 'Toronto', 'Shakespere'])):
 
-    filename = str(inter.author.id) +".txt"
+    filename = str(inter.author.id)
     file1 = open(filename, "w")
-    file1.write(0)
-    file1.write(base)
+    file1.write(str(0) + "\n")
+    file1.write(base + "\n")
     file1.write(prompt)
     file1.close()
+
+    file2 = open('users', "a")
+    file2.write(filename)
+    file2.close()
 
     await inter.response.send_message("A ai has been deployed")
 
 @bot.slash_command(name = "speakto", description="speak to someone else's ai")
 async def speakto(inter, prompt: str, rizzer: disnake.Member):
-    await inter.response.send_message(rizzer.id)
+    username = str(rizzer.id)
+    file1 = open(username, "r")
+    dataset  = file1.read()
+
+    
+
+
+
+
+
+    await inter.response.send_message()
 
 
 
