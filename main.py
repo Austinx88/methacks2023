@@ -1,8 +1,8 @@
 import disnake, random, functions
 from disnake.ext import commands
 
-# drizzy drake bot by sk8#5503
-# this bot was designed for personal use
+# Rizzify bot 
+# this bot was designed for MetHacks23 hackathon
 
 with open('token', 'r') as f:
     TOKEN = f.readline()
@@ -16,6 +16,7 @@ bot = commands.Bot(
   test_guilds=[755459753068593314, 1104555889727385600]
 )
 
+# global variables
 reply_dict = {}
 keywords = []
 quotes_list = []

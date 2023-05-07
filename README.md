@@ -14,5 +14,9 @@ While being ambitious is good, being too ambitious is not good. As learnt in CPS
 We want to split up the github projects, and finish the dating app idea whilst not restricted to the Hackathon time frame.
 
 ## How to run
-Download disnake  `pip install disnake`
-Run main file `python main.py`
+Download disnake:  `pip install disnake`
+Download cohere: `pip install cohere`
+Create discord application->bot at: https://discord.com/developers/applications
+Create a text file called token directory, and paste the newly created discord bots token into the file.
+Run main file: `python main.py`
+
