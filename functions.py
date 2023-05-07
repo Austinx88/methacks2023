@@ -4,8 +4,36 @@ co = cohere.Client('ihkXSqNDJRtrS3iR9HxDrWGREDDM4XR3YpbfO2gE') # This is your tr
 # generate a response from drake himself, based on words/phrases given
 def drake_generate(prompt, slangstr):
     response = co.generate(
-    model='2d60718a-6428-4d76-bdfa-e7ab09df9ae6-ft',
-    prompt="respond to this as the popular toronto rapper, drake, would. DO NOT JUST FINISH THE GIVEN SENTANCE, instead reply to it. use toronto slang such as these (seperated by |); "+ slangstr +" . this is the question:" + prompt,
+    model='9f1426dc-5bab-41ba-84f1-b5ddf77e7d79-ft', #tornto model key
+    prompt="respond to this as the popular toronto rapper, drake, would. DO NOT JUST FINISH THE GIVEN SENTANCE, instead reply to it. DO NOT USE PROFANITY. use toronto slang such as these (seperated by |); "+ slangstr +" . this is the question:" + prompt,
+    max_tokens=300,
+    temperature=0.9,
+    k=0,
+    stop_sequences=[],
+    return_likelihoods='NONE')
+    output = response.generations[0].text.replace('\n', "") if len(response.generations[0].text) != 0 else "drake is thinking right now, try again later"
+    if output == "drake is thinking right now, try again later":
+        print("API KEY RATE LIMITED!!!")
+    return output
+
+def programmer_generate(prompt, slangstr):
+    response = co.generate(
+    model='2d60718a-6428-4d76-bdfa-e7ab09df9ae6-ft', #programmer model key
+    prompt="respond to this as a programmer. DO NOT USE PROFANITY. this is the question:" + prompt,
+    max_tokens=300,
+    temperature=0.9,
+    k=0,
+    stop_sequences=[],
+    return_likelihoods='NONE')
+    output = response.generations[0].text.replace('\n', "") if len(response.generations[0].text) != 0 else "drake is thinking right now, try again later"
+    if output == "drake is thinking right now, try again later":
+        print("API KEY RATE LIMITED!!!")
+    return output
+
+def shakespeare_generate(prompt, slangstr):
+    response = co.generate(
+    model='fabd149b-066d-4c74-9259-092f7f638bfd-ft', #shakespeare model key
+    prompt="respond to this as shakespeare. DO NOT USE PROFANITY. this is the question:" + prompt,
     max_tokens=300,
     temperature=0.9,
     k=0,
