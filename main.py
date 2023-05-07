@@ -19,6 +19,7 @@ bot = commands.Bot(
 reply_dict = {}
 keywords = []
 quotes_list = []
+slangstr = ""
 
 # checks what servers this bot is in, saves info
 def save_servers():
@@ -60,6 +61,9 @@ async def on_ready():
     
     get_quotes()
     
+    slangstr = functions.get_slangstr()
+
+    
 
 @bot.event
 async def on_message(message):
@@ -81,6 +85,12 @@ async def on_message(message):
             if key in user_message:
                 await message.channel.send(reply_dict[key])
                 return
+            
+    if user_message[0:2] == 'd:' or user_message[0:2] == 'D:':
+        prompt = user_message[2:]
+        print(prompt)
+        await message.channel.send(functions.drake_generate(prompt,slangstr))
+        
 
 #slash commands:
 
@@ -121,6 +131,7 @@ async def add(inter):
 async def add(inter):
     await inter.response.send_message('bot made as a hackathon project (Methacks 23)')
     
+
 @bot.slash_command(name='ask_drake', description="provide a prompt and get a response from drizzy (cohere api)")
 async def add(inter, prompt: str):
     await inter.response.send_message(functions.drake_generate(prompt))
@@ -135,6 +146,7 @@ async def add(inter,prompt: str):
     file1.close()
 
     await inter.response.send_message("A prompt has been made")
-    
+
+
 # start bot
 bot.run(TOKEN)
