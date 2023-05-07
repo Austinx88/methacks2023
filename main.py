@@ -19,6 +19,7 @@ bot = commands.Bot(
 reply_dict = {}
 keywords = []
 quotes_list = []
+slangstr = ""
 
 # checks what servers this bot is in, saves info
 def save_servers():
@@ -59,6 +60,9 @@ async def on_ready():
     keywords = list(reply_dict.keys())
     
     get_quotes()
+    
+    slangstr = functions.get_slangstr()
+
     
 
 @bot.event
