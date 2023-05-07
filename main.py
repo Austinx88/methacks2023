@@ -86,10 +86,22 @@ async def on_message(message):
                 await message.channel.send(reply_dict[key])
                 return
             
-    if user_message[0:2] == 'd:' or user_message[0:2] == 'D:':
+    if user_message[0:2] == 'd:':
         prompt = user_message[2:]
         print(prompt)
         await message.channel.send(functions.drake_generate(prompt,slangstr))
+    
+    if user_message[0:2] == 'p:':
+        prompt = user_message[2:]
+        print(prompt)
+        await message.channel.send(functions.programmer_generate(prompt,slangstr))
+    
+    if user_message[0:2] == 's:':
+        prompt = user_message[2:]
+        print(prompt)
+        await message.channel.send(functions.shakespeare_generate(prompt,slangstr))
+        
+        
         
 
 #slash commands:
