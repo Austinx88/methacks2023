@@ -143,7 +143,7 @@ async def add(inter, prompt: str):
 
 
 @bot.slash_command(name = "create", description="create an ai based on your prompt")
-async def add(inter,prompt: str, base: str = commands.Param(name="base", choices=['Programmer', 'Toronto', 'Shakespere'])):
+async def add(inter,prompt: str, base: str = commands.Param(name="base", choices=['Programmer', 'Toronto', 'Shakespeare'])):
 
     filename = str(inter.author.id)
     file1 = open(filename, "w")
@@ -156,21 +156,31 @@ async def add(inter,prompt: str, base: str = commands.Param(name="base", choices
     file2.write(filename)
     file2.close()
 
+
     await inter.response.send_message("A ai has been deployed")
 
 @bot.slash_command(name = "speakto", description="speak to someone else's ai")
 async def speakto(inter, prompt: str, rizzer: disnake.Member):
     username = str(rizzer.id)
     file1 = open(username, "r")
-    dataset  = file1.read()
+    rizz = file1.readline()
+    base = file1.readline()
+    prompt = file1.readline()
+    output = ""
+    if(base == "Programmer"):
+        output = functions.drake_generate(prompt,slangstr)
+    if (base == "Toronto"):
+        output = "asd"
+    if (base == "Shakespeare"):
+        output = "asd"
 
-    
+    await inter.response.send_message(base)
 
 
 
 
 
-    await inter.response.send_message()
+
 
 
 
