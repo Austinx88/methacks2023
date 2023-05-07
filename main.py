@@ -180,13 +180,13 @@ async def speakto(inter, prompt: str, rizzer: disnake.Member):
         file1 = open(username, "r")
         rizz = file1.readline()
         base = file1.readline()
-        prompt = file1.readline()
+        userprompt = file1.readline()
         if (base.__contains__("Programmer")):
-            output = functions.drake_generate(prompt, slangstr)
+            output = functions.drake_generate(prompt + userprompt, slangstr)
         if (base.__contains__("Toronto")):
-            output = functions.programmer_generate(prompt, slangstr)
+            output = functions.programmer_generate(prompt + userprompt, slangstr)
         if (base.__contains__("Shakespeare")):
-            output = functions.shakespeare_generate(prompt, slangstr)
+            output = functions.shakespeare_generate(prompt + userprompt, slangstr)
     except:
         output = "User has not made an ai"
 
