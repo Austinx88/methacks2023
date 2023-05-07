@@ -1,4 +1,4 @@
-# Inspiration
+# Methacks 2023 Project
 Originally, we wanted to make an AI dating app based on characters, including Drake, Shakespeare, and a generic programmer. This app was our passion, at least until Sunday, when we realized we could not finish on time. Our group then agreed on making a discord bot, using our trained models. We used Drake as the cover, as his model was the most recognizable. Lots of our code related with the cohere api also transferred over.
 
 ## What it does
