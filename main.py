@@ -1,4 +1,4 @@
-import disnake, random
+import disnake, random, functions
 from disnake.ext import commands
 
 # drizzy drake bot by sk8#5503
@@ -119,7 +119,11 @@ async def add(inter):
     
 @bot.slash_command(name='bot_info', description="info about bot")
 async def add(inter):
-    await inter.response.send_message('bot made by sk8#5503. say that you a lesbian, girl, me too')
+    await inter.response.send_message('bot made as a hackathon project (Methacks 23)')
+    
+@bot.slash_command(name='ask_drake', description="provide a prompt and get a response from drizzy (cohere api)")
+async def add(inter, prompt: str):
+    await inter.response.send_message(functions.drake_generate(prompt))
     
 # start bot
 bot.run(TOKEN)
