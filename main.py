@@ -124,6 +124,17 @@ async def add(inter):
 @bot.slash_command(name='ask_drake', description="provide a prompt and get a response from drizzy (cohere api)")
 async def add(inter, prompt: str):
     await inter.response.send_message(functions.drake_generate(prompt))
+
+
+@bot.slash_command(name = "create", description="create an ai based on your prompt")
+async def add(inter,prompt: str):
+
+    filename = str(inter.author.id) +".txt"
+    file1 = open(filename, "w")
+    file1.write(prompt)
+    file1.close()
+
+    await inter.response.send_message("A prompt has been made")
     
 # start bot
 bot.run(TOKEN)
