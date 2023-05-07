@@ -10,5 +10,15 @@ def drake_generate(prompt):
     k=0,
     stop_sequences=[],
     return_likelihoods='NONE')
-    return response.generations[0].text
+    return response.generations[0].text if len(response.generations[0].text) != 0 else "drake is thinking right now, try again later"
     
+def ai_generate(prompt):
+    response = co.generate(
+    model='2d60718a-6428-4d76-bdfa-e7ab09df9ae6-ft',
+    prompt=prompt,
+    max_tokens=300,
+    temperature=0.9,
+    k=0,
+    stop_sequences=[],
+    return_likelihoods='NONE')
+    return response.generations[0].text if len(response.generations[0].text) != 0 else "drake is thinking right now, try again later"
